@@ -1,0 +1,30 @@
+# name: Github Actions
+# run-name: ${{ github.actor }} is testing out Github Actions
+# on:
+#   push:
+#     branches:
+#       - Website
+
+# jobs:
+#   HUDINI-Deployment:
+#     runs-on: ubuntu-latest
+#     steps: 
+#       - name: Checkout code
+#         uses: actions/checkout@v2
+
+#       - name: Install curl
+#         run: sudo apt-get update && sudo apt-get install curl -y
+
+#       - name: Install node
+#         run: |
+#           npm init -y
+#           npm install -g @managexr/mxr-cli
+
+#       - name: Update dependencies
+#         run: npm update
+
+#       - name: Fix vulnerabilities
+#         run: npm audit fix --force
+
+#       - name: Deploy to Hudini Website
+#         run: curl -F "file=@./build.apk" http://content.cdirmit.co/v2/apks/build.apk
