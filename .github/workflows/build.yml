@@ -1,38 +1,31 @@
-name: Github Actions Demo
-run-name: ${{ github.actor }} is testing out Gitea Actions
+name: Build Unity Project
+
 on:
   push:
     branches:
       - main
 
 jobs:
-  Unity-APK:
+  build:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        targetPlatform:
-          - Android
+    environment: UNITY # Links to the UNITY environment for additional protections
+
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v2  # Ensure your code is checked out
-      
-      - uses: actions/cache@v3
-        with:
-          path: Library
-          key: Library-${{ matrix.targetPlatform }}
-          restore-keys: Library-
-      - if: matrix.targetPlatform == 'Android'
-        uses: jlumbroso/free-disk-space@v1.3.1
-      - uses: game-ci/unity-builder@v4
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Run Unity Builder
+        uses: game-ci/unity-builder@v4
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
-          targetPlatform: ${{ matrix.targetPlatform }}
-      - uses: actions/upload-artifact@v3
-        with:
-          name: Build-${{ matrix.targetPlatform }}
-          path: build/${{ matrix.targetPlatform }}
+          targetPlatform: Android
+          unityVersion: auto
 
+      - name: Upload Build
+        uses: actions/upload-artifact@v3
+        with:
+          name: Build
+          path: build/
