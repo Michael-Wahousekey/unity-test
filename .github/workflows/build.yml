@@ -35,6 +35,8 @@ jobs:
           git config --global user.name "GitHub Action"
           git config --global user.email "action@github.com"
 
+          sudo chmod -R 777 build/Android
+
           # Rename the APK file for version tracking
           mv build/Android/*.apk build/Android/MyApp-${{ github.run_number }}.apk
 
