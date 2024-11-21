@@ -46,10 +46,8 @@ ExportedObj/
 *.mdb
 *.opendb
 *.VC.db
-<<<<<<< HEAD
-=======
+
 *.log
->>>>>>> 38a47c1 (Initialize)
 
 # Unity3D generated meta files
 *.pidb.meta
@@ -60,26 +58,16 @@ ExportedObj/
 sysinfo.txt
 
 # Builds
-<<<<<<< HEAD
-*.apk
-*.aab
-*.unitypackage
-*.app
-=======
-*.aab
-*.unitypackage
-*.app
 # *.apk
-
-# Docker
-/docker
+*.aab
+*.unitypackage
+*.app
 
 # Logs
 *.log
 
 # Docker
 /docker
->>>>>>> 38a47c1 (Initialize)
 
 # Crashlytics generated file
 crashlytics-build.properties
