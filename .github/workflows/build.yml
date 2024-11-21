@@ -41,7 +41,7 @@ jobs:
       - name: Deploy To HuDiNi Website
         run: |
           # BYE BYE
-          curl -H "Content-Type: application/octet-stream" -H "Authorization: Bearer ${{ secrets.TOKEN_BEARER }}" -F "file=@build/Android/MyApp-${{ github.run_number }}.apk" http://content.cdirmit.co/v2/apks/MyApp-${{ github.run_number }}.apk
+          curl -H "Content-Type: application/octet-stream" -H "Authorization: Bearer ${{ secrets.TOKEN_BEARER }}" -F "file=@build/Android/MyApp-${{ github.run_number }}.apk" http://content.cdirmit.co/v2/upload/misc/MyApp-${{ github.run_number }}.apk
   
   
   
