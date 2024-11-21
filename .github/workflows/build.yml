@@ -27,5 +27,20 @@ jobs:
       - name: Upload Build
         uses: actions/upload-artifact@v3
         with:
-          name: Build
-          path: build/
+          name: Android-Build
+          path: build/Android/*.apk # Adjusted to target the Android-specific folder
+
+      - name: Commit and Push APK to GitHub
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+
+          # Rename the APK file for version tracking
+          mv build/Android/*.apk build/Android/MyApp-${{ github.run_number }}.apk
+
+          # Commit and push the APK to the repository
+          git add build/Android/MyApp-${{ github.run_number }}.apk
+          git commit -m "Add new APK build (version ${{ github.run_number }})"
+          git push origin main
+  
+  
